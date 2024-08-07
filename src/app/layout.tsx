@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Notification from "@/components/layout/notification";
+import Header from "@/components/layout/header";
+import SideBar from "@/components/layout/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex justify-between">
+          {/* Side Bar */}
+          <SideBar />
+
+          {/* Main Content Wrapper */}
+          <div className="main-content-wrapper w-full">
+            {/* Header */}
+            <Header />
+
+            {/* Content */}
+            <div className="main-content h-full p-[28px] bg-[#2A2A2A]">
+              {children}
+            </div>
+          </div>
+          {/* Notification */}
+          <Notification />
+        </div>
+      </body>
     </html>
   );
 }
